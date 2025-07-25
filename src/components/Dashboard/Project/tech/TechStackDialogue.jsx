@@ -12,11 +12,11 @@ export default function TechStackDialog({ project }) {
   const techs = useProjectStore((state) => state.techs);
 
   const [selectedTech, setSelectedTech] = useState([]);
-  const [isOpen, setIsOpen] = useState(false); // 🔄 Manage dialog state
+  const [isOpen, setIsOpen] = useState(false); 
 
   const projectId = project?.id;
 
-  // ✅ Pre-select already added techs when dialog opens
+  //  Pre-select already added techs when dialog opens
   useEffect(() => {
     if (isOpen && project?.techs) {
       const existingIds = project.techs.map((tech) => tech.id);
@@ -32,7 +32,7 @@ export default function TechStackDialog({ project }) {
     );
   };
 
-  // ✅ Prevent duplicates + close dialog after adding
+  //  Prevent duplicates + close dialog after adding
   const handleAdd = () => {
     const existingIds = project.techs.map((t) => t.id);
     let addedCount = 0;
@@ -50,8 +50,7 @@ export default function TechStackDialog({ project }) {
     } else {
       toast.info("No new technologies were added.");
     }
-    // setSelectedTech([]); // optional reset
-    setIsOpen(false); // ✅ Close the dialog
+    setIsOpen(false); //  Close the dialog
   };
 
   return (

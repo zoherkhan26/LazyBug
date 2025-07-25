@@ -1,6 +1,7 @@
 import useProjectStore from "@/Store/projectstore";
 import TechStackDialog from "./TechStackDialogue"; 
 import { useParams } from "react-router-dom";
+import EmptyState from "@/components/Dashboard/Project/EmptyState";
 
 export default function Techtab() {
 
@@ -18,7 +19,10 @@ export default function Techtab() {
         <h3 className="text-xl font-semibold">Tech Stack</h3>
         <TechStackDialog project={project} />
       </div>
-
+    
+      <section className="flex grow flex-1 flex-col space-y-1  p-2 py-6 rounded gap-1.5  min-h-[300px]">
+        {
+          project.techs.length === 0 ?  (<EmptyState title="No Tech Stack Added" />)  :
       <div className="flex flex-wrap gap-2">
         {(project?.techs || []).map((tech, index) => (
           <div
@@ -36,6 +40,9 @@ export default function Techtab() {
           </div>
         ))}
       </div>
+
+}
+    </section>
     </div>
   );
 }

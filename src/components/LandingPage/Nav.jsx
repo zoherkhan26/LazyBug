@@ -11,13 +11,16 @@ function Nav() {
 <>
     <nav className="w-full flex justify-evenly h-16 items-center ">
     <div className='flex items-center space-x-2'>
-  <img 
-    className='w-12'
+  <motion.img 
+    className='w-12 hover:opacity-80'
     src={lazyBugLogo}
     alt="LazyBug Logo"
+    initial={{scale:0.5, opacity:0}}
+    animate={{ opacity: 1,scale:1 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
   />   
   <motion.h1
-    className="text-3xl font-extralight tracking-wide"
+    className="text-3xl font-extralight tracking-wide hover:opacity-80 cursor-pointer"
     style={{ fontFamily: "Bebas Neue" }}
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}

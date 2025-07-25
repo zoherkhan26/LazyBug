@@ -113,3 +113,14 @@ body {
     @apply bg-background text-foreground;
   }
 }  */
+
+
+.bg-dots {
+  background-color: #f8fafc; /* light gray */
+  background-image: radial-gradient(circle, #dbeafe 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-blacks {
+  background-color: black;
+}

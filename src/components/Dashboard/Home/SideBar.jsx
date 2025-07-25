@@ -7,14 +7,13 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
-} from "@/components/ui/sheet"; // Importing ShadCN Sheet
+} from "@/components/ui/sheet"; 
 import lazyBugLogo from "../../../assets/lazyBugLogo.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SidebarContext = createContext();
 
 export default function Sidebar({ open, setOpen }) {
-  const [expanded, setExpanded] = useState(true);
   const location = useLocation();
   const projects = useProjectStore((state) => state.projects);
 
@@ -58,9 +57,9 @@ export default function Sidebar({ open, setOpen }) {
 
       {/* Desktop Sidebar */}
       <motion.aside
-        initial={{ width: open ? 56 : 56 }}
+        initial={{ width: open ? 224 : 56 }}
         animate={{ width: open ? 224 : 56 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        transition={{ duration: 0.4, ease: "easeIn" }}
         className="h-screen hidden sm:flex flex-col py-2 border-r border-gray-200 shadow-sm bg-white"
       >
         <nav
@@ -173,7 +172,8 @@ export function SidebarItem({ projects }) {
           );
         })
       ) : (
-        <p className="text-sm text-gray-500 ml-4">No projects yet</p>
+
+        open &&   <p className="text-xs text-gray-500 ml-4">No projects yet</p>
       )}
     </ul>
   );

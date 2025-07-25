@@ -6,7 +6,7 @@ function DashboardButton() {
   return (
       <Link to={'/dashboard/home'}>
     <div
-      className={`group relative w-24 sm:w-28 md:w-32 lg:w-36 cursor-pointer overflow-hidden rounded-full   p-1.5 px-3 text-center font-medium   translate-y-1.5 border border-gray-300 mb-2 items-center`}
+      className={`group relative  w-28 md:w-32 lg:w-36 cursor-pointer overflow-hidden rounded-full   p-1.5 px-3 text-center font-medium   translate-y-1.5 border border-gray-300 mb-2 items-center`}
     >
       <span className="inline-block translate-x-1 text-sm sm:text-base tracking-wide transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
         Dashboard

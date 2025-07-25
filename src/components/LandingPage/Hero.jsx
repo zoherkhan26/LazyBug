@@ -8,6 +8,9 @@ function Hero() {
   return (  
   
   <>
+{/* <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-200 opacity-30 rounded-full blur-3xl z-[-1] animate-pulse" />
+<div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-amber-200 opacity-30 rounded-full blur-3xl z-[-1] animate-pulse" /> */}
+
 
   <main className="flex flex-col items-center justify-center flex-grow text-black  text-center px-4">
     <motion.h1
@@ -16,7 +19,8 @@ function Hero() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
-      Effortless Project Planning, Zero Hassle! 
+    Effortless Project Planning, Zero Hassle!
+
     </motion.h1>
     <p className="text-base md:text-lg mt-4 max-w-2xl">
       Plan, organize, and execute your projects seamlessly with <span className='text-black'>Lazy<span className='text-primary'>Bug</span></span>.
@@ -30,10 +34,10 @@ function Hero() {
       
     >
       <Link to={"/dashboard/home"}>
-      <Button className="rounded-full group bg-black text-white hover:bg-black/90" variant='default'>
+      <Button className=" text-white  rounded-full group bg-gradient-to-r from-black/40 to-black  group-hover:opacity-100 transition duration-500 hover:scale-105" variant='default'>
         Get Started 
         <ChevronRight
-    className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+    className="ml-1 size-5 transition-transform duration-300 group-hover:translate-x-1"
   />
       </Button>
       </Link>

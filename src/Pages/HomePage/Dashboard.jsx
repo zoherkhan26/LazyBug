@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import SideBar from './Home/SideBar'
-import { BreadCrumb } from './Home/BreadCrumb'
+import SideBar from '../../components/Dashboard/Home/SideBar'
+import { BreadCrumb } from '../../components/Dashboard/Home/BreadCrumb'
 
-import { NavBar } from './Home/NavBar'
+import { NavBar } from '../../components/Dashboard/Home/NavBar'
 import { Outlet } from 'react-router-dom'
 
 export const Dashboard = () => {
-  const [open , setOpen] = useState(false);
+  const [open , setOpen] = useState(window.innerWidth > 768 ? true : '');
   return (
     <div className='flex h-screen overflow-hidden'> 
       {/* Sidebar */}

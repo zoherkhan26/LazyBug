@@ -1,21 +1,25 @@
 import React from 'react';
 import { tabs } from '../../../Constants/constant.js';
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import {  AnimatePresence, motion } from 'framer-motion';
 
 function Tabs({ projectname }) {
   return (
-    <motion.div 
+    <div 
       className="flex w-full gap-1 max-w-xl"
-      // initial={{ opacity: 0, y:  }}
-      // animate={{ opacity: 1, y: 0 }}
-      // transition={{ duration: 0.3 }}
+
     >
       {tabs.map((tab, index) => {
         const path = `/dashboard/projects/${projectname}/${tab}`;
 
         return (
           <div key={tab} className="flex-1">
+            <AnimatePresence>
+            <motion.div
+            initial={{scale: 0, opacity: 0 }}
+            animate={{scale: 1, opacity: 1}}
+            transition={{type: "spring", duration: 1, transition: 'easeIn'} }
+            >
             <NavLink
               to={path}
               className={({ isActive }) =>
@@ -27,31 +31,19 @@ function Tabs({ projectname }) {
               }
             >
               {({ isActive }) => (
-                <motion.span
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{
-                  opacity: 1,
-                  scale:  1,
-
-                }}
-                transition={{
-                 type: 'spring',
-                    stiffness: 400,
-                    damping: 18,
-                    bounce: 0.15,
-                  
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                <motion.div
+               
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </motion.span>  
+              </motion.div>  
               )}
             </NavLink>
+            </motion.div>
+            </AnimatePresence>
           </div>
         );
       })}
-    </motion.div>
+    </div>
   );
 }
 

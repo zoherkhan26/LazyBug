@@ -15,7 +15,7 @@ export const BreadCrumb = () => {
     decodeURIComponent(segment.charAt(0).toUpperCase() + segment.slice(1));
 
   return (
-    <div className="flex items-center space-x-2  text-xs md:text-base  ">
+    <div className="flex items-center space-x-1 md:space-x-2  text-xs md:text-base  ">
       {pathSegments.map((segment, index) => {
         const path = buildPath(index);
         const isLast = index === pathSegments.length - 1;
@@ -25,13 +25,13 @@ export const BreadCrumb = () => {
             {index > 0 && <ChevronRight className="w-4 h-4 text-gray-500" />}
 
             {isLast ? (
-              <span className="text-faded font-medium">
+              <span className="text-faded font-medium  text-sm">
                 {formatSegment(segment)}
               </span>
             ) : (
               <Link
                 to={path}
-                className="text-faded font-medium hover:text-black"
+                className="text-faded font-medium hover:text-black text-sm"
               >
                 {formatSegment(segment)}
               </Link>

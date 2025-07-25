@@ -4,16 +4,31 @@ import { CreateProjectForm } from './CreateProjectForm'
 import { Key, Plus } from 'lucide-react'; 
 import useProjectStore from '@/Store/projectstore';
 import ProjectCard from './ProjectCard';
+import NoProjects from './NoProjects.';
+import { motion } from 'framer-motion';
 
 export default function Layout() {
   const [open, setOpen]  = useState()
   const projects = useProjectStore((state) => state.projects )
+
+  const variant = {
+      hidden : {},
+      visible: {
+        transition: {
+          staggerChildren: 0.25,
+        },
+      }
+  }
   return (
     
-    projects ?
-   <section className='max-w-[1300px] min-h-full px-4 py-4 pt-6 md:px-6 flex flex-col  gap-y-4 '>
+   
+   <motion.section 
+   variants={variant}
+   initial="hidden"
+   animate="visible"
+   className='max-w-[1300px] min-h-full px-4 py-4 pt-6 md:px-6 flex flex-col  gap-y-4 '>
 
-             <div className='border-b border-gray-300 pb-6 '>
+             <div className='border-b border-black/10 pb-6 '>
                    
                      
              <p  className='text-faded-50 font-semibold '>Welcome Back</p> 
@@ -30,8 +45,11 @@ export default function Layout() {
                </div>
             </div>
 
+          {  projects.length === 0 ? <NoProjects/> :
               <div className='grow p-2 bg-gray-50'>  
-                  <div className='flex flex-wrap gap-6 px-4 py-2'>
+               
+
+                  <div className='grid grid-rows-1 md:flex md:flex-grow gap-6 px-4 py-2'>
                   {
                     projects.map((project) => (
                         
@@ -39,12 +57,13 @@ export default function Layout() {
                     ))
                   }
                   </div>
+                
 
             </div>
-        
+          } 
 
-   </section>
-   : ''
+   </motion.section>
+   
   )
 }
 

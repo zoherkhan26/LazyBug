@@ -9,6 +9,7 @@ const useProjectStore = create(
   persist(
       (set, get) => ({
           projects: [{
+            createdAt: "Wed Jun 04 2025",
               name: "zherproj",
               description: "a",
               id: 21,

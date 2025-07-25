@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, PlusCircle } from "lucide-react";
 import { AddFeatureForm } from "./AddFeatureForm";
 import useProjectStore from "@/Store/projectstore";
 import { useParams } from "react-router-dom";
 import Featurelist from "./Featurelist";
+import EmptyState from "@/components/Dashboard/Project/EmptyState";
+import { AnimatePresence, motion } from "framer-motion";
 
 function Mvptab() {
   const [isFeatureDialogOpen, setFeatureDialogOpen] = useState(false);
   const projects = useProjectStore((state) => state.projects);
-  // const features = useProjectStore((state) => state.features);
   const removeFeature = useProjectStore((state) => state.removeFeature);
   const { projectname } = useParams();
   const project = projects.find((p) => p.name === projectname);
   const projectId = project?.id;
-  console.log(project);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.25,
+      },
+    },
+  };
 
   return (
-    <section className="flex flex-col grow gap-4 ">
+    <section className="flex flex-col grow gap-4">
       <div className="flex justify-between items-center">
         <p className="font-semibold text-center text-black/70 text-sm">
           Features
@@ -28,7 +37,7 @@ function Mvptab() {
             variant="primary"
             onClick={() => setFeatureDialogOpen(true)}
           >
-            <Plus className="" />
+            <Plus />
             <span className="text-xs font-medium"> New Feature </span>
           </Button>
 
@@ -40,29 +49,44 @@ function Mvptab() {
         </div>
       </div>
 
-      <section className="flex grow flex-col space-y-1 bg-gray-100 p-2 py-6 rounded gap-1.5 ">
-        {[...project.features]
-          .sort((a, b) => {
-            // Sorting the incompleted first
-            if (a.completed !== b.completed) {
-              return a.completed - b.completed;
+      <motion.section
+        className="flex grow flex-1 flex-col space-y-1 p-2 py-6 rounded gap-1.5 min-h-[300px]"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {project.features.length === 0 ? (
+          <EmptyState
+            title={"No Features Added"}
+            subtitle={"Start by adding your first feature"}
+            action={
+              <Button
+                className="bg-black text-white text-xs rounded font-semibold transition-all hover:cursor-pointer"
+                onClick={() => setFeatureDialogOpen(true)}
+              >
+                <PlusCircle className="w-4 h-4 mr-1" />
+                Add Feature
+              </Button>
             }
-
-            // sorting the completed ones, using the 'completedAt' key
-            if (a.completed && b.completed) {
-              return b.completedAt - a.completedAt;
-            }
-
-            return 0;
-          })
-          .map((feature) => (
-            <Featurelist
-              key={feature.id}
-              feature={feature}
-              projectId={projectId}
-            />
-          ))}
-      </section>
+          />
+        ) : (
+          project.features
+            .sort((a, b) => {
+              if (a.completed !== b.completed) {
+                return a.completed - b.completed;
+              }
+              if (a.completed && b.completed) {
+                return b.completedAt - a.completedAt;
+              }
+              return 0;
+            })
+            .map((feature) => (
+        
+                <Featurelist feature={feature} projectId={projectId} key={feature.id} />
+             
+            ))
+        )}
+      </motion.section>
     </section>
   );
 }

@@ -9,16 +9,30 @@ import {
 import {  MoreVertical, Trash2 } from 'lucide-react';
 import useProjectStore from '@/Store/projectstore';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 
 function ProjectCard({ project }) {
   const removeProject = useProjectStore((state) => state.removeProject);
   const techToDisplay = project?.techs?.slice(0, 5)
 
-
+const childvariants = {
+  hidden: { opacity: 0, scale: 0.9   },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.25,
+      ease: "easeOut",
+    },
+  },
+}
 
   return (
     <Link to={`/dashboard/projects/${project.name}`}>
-      <div className="w-[280px] min-h-[180px] rounded-[8px] border border-gray-200 bg-white p-4 shadow-lg hover:shadow-xl transition-shadow flex flex-col gap-2">
+      <motion.div
+      variants={childvariants}
+      className="w-[280px] min-h-[180px] rounded-[8px] border border-gray-300 bg-white p-4 shadow-lg hover:shadow-xl transition-shadow flex flex-col gap-2">
         <div className="flex justify-between  items-center">
           <h3 className="text-md font-semibold">{project.name}</h3>
           <DropdownMenu>
@@ -67,7 +81,7 @@ function ProjectCard({ project }) {
     day: 'numeric',
   })}
 </div>
-      </div>
+      </motion.div>
     </Link>
   );
 }

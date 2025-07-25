@@ -2,6 +2,7 @@ import useProjectStore from '@/Store/projectstore';
 import { useState } from 'react';
 import { Check, Clock, Ellipsis, Trash2, Eye, Loader, BadgeCheck, CircleCheck } from 'lucide-react';
 import { toast } from "react-toastify";
+import { motion } from 'framer-motion';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -36,11 +37,27 @@ export default function Featurelist({ feature, projectId }) {
     toast.info(message);
   };
 
+  const childVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.25,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className={`flex flex-row sm:items-center justify-between w-full px-4 py-3 mb-3 rounded bg-white border border-black/10 shadow-lg gap-y-3 sm:gap-y-0 ${feature.completed ? 'opacity-70' : ''}`}>
+    <motion.div 
+    variants={childVariants}
+    className={`flex flex-row sm:items-center justify-between w-full px-4 py-3 mb-3 rounded bg-white border border-black/10 shadow-lg gap-y-3 sm:gap-y-0 ${feature.completed ? 'opacity-70' : ''}`}>
       
       {/* Left Section */}
-      <div className="flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-3 w-full sm:w-auto">
+      <motion.div  
+     
+      className="flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-3 w-full sm:w-auto">
         <label className="group cursor-pointer">
           <input
             type="checkbox"
@@ -86,7 +103,7 @@ export default function Featurelist({ feature, projectId }) {
               </p>
             ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Section */}
       <div className="flex items-center gap-3 self-end sm:self-auto">
@@ -160,7 +177,7 @@ export default function Featurelist({ feature, projectId }) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

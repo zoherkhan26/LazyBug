@@ -5,6 +5,7 @@ import useProjectStore from "@/Store/projectstore";
 import AddMilestoneForm from "./AddMilestoneForm";
 import { useParams } from "react-router-dom";
 import MilestoneList from "./MilestoneList";
+import EmptyState from "@/components/Dashboard/Project/EmptyState";
 
 
 const MilestoneTab = () => {
@@ -21,8 +22,15 @@ const MilestoneTab = () => {
         <h2 className="text-sm font-bold">Milestones</h2>
         <AddMilestoneForm projectId={projectId} />
       </div>
-      <div className="flex flex-col gap-2 ">
-    {  project?.milestones?.map((milestone) => ( 
+      <div className="flex grow flex-1 flex-col space-y-1  p-2 py-6 rounded gap-1.5  min-h-[300px]">
+    { project.milestones.length === 0 ? (
+        <EmptyState
+        title="No Milestones Added"
+        subtitle="Track your progress by adding key milestones"
+      />
+    ) : 
+    
+    project?.milestones?.map((milestone) => ( 
       
       <MilestoneList key={milestone.id} milestone={milestone} projectId={projectId} />
       ))}

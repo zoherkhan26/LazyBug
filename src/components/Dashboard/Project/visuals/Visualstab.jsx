@@ -6,6 +6,8 @@ import { Plus } from "lucide-react";
 import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import EmptyState from "@/components/Dashboard/Project/EmptyState";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export default function VisualsTab() {
   const { projects, addVisual, removeVisual } = useProjectStore();
@@ -24,12 +26,10 @@ export default function VisualsTab() {
 
     setUploading(true);
     try {
+      
       const result = await pinata.upload.file(file);
       const url = await pinata.gateways.convert(result.IpfsHash);
-       console.log(url)
-
-     
-    
+      console.log(url)    
       if (project.visuals.includes(url)) {
         toast.error("This image already exists.");
         return;
@@ -93,42 +93,52 @@ export default function VisualsTab() {
           hidden
         />
         </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4 bg-gray-100 grow p-4">
-        {project?.visuals?.map((url) => (
-          <div key={url} className="relative group w-full aspect-square cursor-pointer hover:scale-[1.02] transition-transform duration-200 ease-in-out">
-            <img
-              src={url}
-              alt="Visual"
-              loading="lazy"
-              className="absolute inset-0 rounded shadow-md object-cover w-full h-full"
-              onClick={() => setpreviewImage(url)}
-            />
-            <button
-              onClick={() => handleDelete(url)}
-              className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-      </div>
+        
+                    {project.visuals.length === 0 ? (
+              <EmptyState
+                title="No Visuals Uploaded"
+                subtitle="Add screenshots, mockups, or designs here"
+              />
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4 bg-gray-100 grow p-4">
+                {project?.visuals.map((url) => (
+                  <div key={url} className="relative group w-full aspect-square cursor-pointer hover:scale-[1.02] transition-transform duration-200 ease-in-out">
+                    <img
+                      src={url}
+                      alt="Visual"
+                      loading="lazy"
+                      className="absolute inset-0 rounded shadow-md object-cover w-full h-full"
+                      onClick={() => setpreviewImage(url)}
+                    />
+                    <button
+                      onClick={() => handleDelete(url)}
+                      className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
       <Dialog 
       open={!!previewImage}
       onOpenChange={() => setpreviewImage(null)}
       >
-          <DialogContent
-            className="bg-black/90 border-none p-0 max-w-full flex justify-center items-center"
-            onClick={() => setpreviewImage(null)}
-           >
-            <img
-                src={previewImage || "" }
-                alt="Preview"
-                className="w-auto h-auto max-w-[95vh]  max-h-[95vh] object-contain rounded-lg "
-                onClick={(e) => e.stopPropagation()}
-            />
+        <DialogClose asChild>
+  <button className="absolute top-4 right-4 text-white text-2xl">×</button>
+</DialogClose>
+         <DialogContent
+  className="bg-black/90 border-none p-0 max-w-[95vw] max-h-[95vh] flex justify-center items-center overflow-hidden"
+  onClick={() => setpreviewImage(null)}
+>
+  <img
+    src={previewImage || ""}
+    alt="Preview"
+    className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
+    onClick={(e) => e.stopPropagation()}
+  />
+</DialogContent>
 
-          </DialogContent>
 
       </Dialog>
 

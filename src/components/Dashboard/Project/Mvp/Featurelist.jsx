@@ -25,8 +25,12 @@ export default function Featurelist({ feature, projectId }) {
   const isDueDatePassed = feature.dueDate ? new Date(feature.dueDate) < new Date() : false;
 
   const onDelete = (featureId) => {
-    removeFeature(projectId, featureId);
-    toast.success("Feature deleted successfully!");
+    try {   
+      removeFeature(projectId, featureId);
+      toast.success("Feature deleted successfully!");
+    } catch (error) {
+      toast.error(error)
+    }
   };
 
   const FeatureCompleted = (featureId) => {

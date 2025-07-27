@@ -32,11 +32,8 @@ const AddMilestoneForm = ({ projectId }) => {
 
      setOpen(false);
     addMilestone(projectId, newMilestone);
+    toast.success(' Milestone added successfully!', )
     reset();
-    toast.success(' Milestone added successfully!', {
-      className: 'toast-fade-top bg-black  text-sm px-4 py-2 rounded',
-      transition: Zoom,
-    })
   } catch (error) {
     toast.error('❌ Failed to add Milestone') 
     }

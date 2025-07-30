@@ -9,7 +9,7 @@ import lazyBugLogo from '../../assets/lazyBugLogo.png'
 function Nav() {
   return (
 <>
-    <nav className="w-full flex justify-evenly h-16 items-center ">
+    <nav className="w-full flex justify-between h-16 items-center ">
     <div className='flex items-center space-x-2'>
   <motion.img 
     className='w-12 hover:opacity-80'

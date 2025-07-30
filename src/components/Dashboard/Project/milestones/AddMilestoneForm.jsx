@@ -13,12 +13,13 @@ import { Button } from "@/components/ui/button";
 import useProjectStore from "@/Store/projectstore";
 import { toast } from "react-toastify";
 
+
 const AddMilestoneForm = ({ projectId }) => {
   const {addMilestone} = useProjectStore()
   const { register, handleSubmit, reset, formState: { errors }, clearErrors } = useForm({mode: 'onSubmit'});
   const [open, setOpen] = useState(false);
 
-  const onSubmit =  (data) => {
+  const onSubmit = (data) => {
     try {
       
    
@@ -31,7 +32,7 @@ const AddMilestoneForm = ({ projectId }) => {
     };
 
      setOpen(false);
-    addMilestone(projectId, newMilestone);
+     addMilestone(projectId, newMilestone);
     toast.success(' Milestone added successfully!', )
     reset();
   } catch (error) {

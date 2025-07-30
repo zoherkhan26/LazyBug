@@ -10,11 +10,14 @@ const useProjectStore = create(
       (set, get) => ({
           projects: [{
             createdAt: "Wed Jun 04 2025",
-              name: "zherproj",
-              description: "a",
+              name: "LazyBug",
+              id: 1748977011409,
+              description: "LazyBug is a clean, frontend-only bug tracking tool designed for managing project progress, milestones, and visual documentation. all without a backend.",
               id: 21,
               features: [],
-              visuals: []
+              visuals: [],
+              techs:[],
+              milestones: []
           }, ],
 
           addProject: (project) =>

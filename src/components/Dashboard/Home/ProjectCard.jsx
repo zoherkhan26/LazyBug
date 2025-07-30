@@ -32,7 +32,7 @@ const childvariants = {
     <Link to={`/dashboard/projects/${project.name}`}>
       <motion.div
       variants={childvariants}
-      className="w-[280px] min-h-[180px] rounded-[8px] border border-gray-300 bg-white p-4 shadow-lg hover:shadow-xl transition-shadow flex flex-col gap-2">
+      className="w-[280px] min-h-[180px] rounded-[8px] border border-gray-300 bg-white p-4 shadow-lg hover:shadow-2xl transition-shadow flex flex-col gap-2 ">
         <div className="flex justify-between  items-center">
           <h3 className="text-md font-semibold">{project.name}</h3>
           <DropdownMenu>

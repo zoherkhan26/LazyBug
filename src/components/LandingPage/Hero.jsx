@@ -3,16 +3,17 @@ import {motion} from "framer-motion"
 import { Button } from '../ui/button'
 import { ChevronRight } from "lucide-react";
 import { Link } from 'react-router-dom';
+import MockupShowcase from './MockupShowcase';
+import { DotPatterns } from '../DotPatterns';
 
 function Hero() {
   return (  
   
-  <>
-{/* <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-200 opacity-30 rounded-full blur-3xl z-[-1] animate-pulse" />
-<div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-amber-200 opacity-30 rounded-full blur-3xl z-[-1] animate-pulse" /> */}
-
-
-  <main className="flex flex-col items-center justify-center flex-grow text-black  text-center px-4">
+  
+    <>
+    <div className='flex flex-col  scroll-smooth w-full pt-32 gap-y-14 '>
+    {/* <DotPatterns/> */}
+  <main className="z-50 flex flex-col items-center justify-center flex-grow text-black  text-center px-4 ">
     <motion.h1
       className="text-3xl md:text-5xl font-bold"
       initial={{ opacity: 0, y: -20 }}
@@ -42,10 +43,14 @@ function Hero() {
       </Button>
       </Link>
     </motion.div>
-  </main>
+  </main>  
 
-  {/* Footer */}
 
+  <MockupShowcase/> 
+
+
+
+  </div>  
   </>
 
   )

@@ -34,18 +34,28 @@ export default function MilestoneCard({ milestone, projectId }) {
     ? new Date(milestone.deadline) < new Date()
     : false;
 
-  const handleDelete = () => {
-    try {
-      deleteMilestone(projectId, milestone.id);
-      toast.success("Milestone deleted!");
-    } catch (error) {}
-  };
+    const handleDelete = async (e) => {
+      e.stopPropagation(); 
+      try {
+        await deleteMilestone(projectId, milestone.id);
+        toast.info("Milestone deleted!");
+      } catch (error) {
+        toast.error("Failed to delete milestone.");
+      }
+    };
 
-  const toggleStatus = () => {
+  const toggleStatus = (e) => {
     const newStatus = milestone.status === "pending" ? "completed" : "pending";
+  
     updateMilestone(projectId, milestone.id, { status: newStatus });
-    toast.info(`Marked as ${newStatus}`);
+  
+    newStatus === "pending"
+      ? toast.info(`Marked as ${newStatus}`)
+      : toast.success(`Marked as ${newStatus}`);
+  
+    e.stopPropagation(); 
   };
+  
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -106,18 +116,18 @@ export default function MilestoneCard({ milestone, projectId }) {
               align="start"
             >
               <DropdownMenuItem
-                onClick={toggleStatus}
+                onClick={ (e) => toggleStatus(e)}
                 className="flex items-center gap-2 px-2 py-2 cursor-pointer text-sm font-semibold text-gray-700 hover:bg-gray-100 transition-colors border-b border-b-black/10"
               >
                 <CheckCircle size={16} />
                 <span>
                   Mark as{" "}
-                  {milestone.status === "pending" ? "Completed" : "Pending"}
+                  {milestone.status === "pending" ? "Achieved" : "Pending"}
                 </span>
               </DropdownMenuItem>
 
               <DropdownMenuItem
-                onClick={handleDelete}
+                onClick={(e) => handleDelete(e)}
                 className="flex items-center gap-2 px-2 py-2 cursor-pointer text-sm font-semibold   text-gray-700 hover:bg-gray-100 transition-colors"
               >
                 <Trash2 size={16} />

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -97,22 +98,7 @@ body {
   width: 100% !important;
 }
 
-/* 
---color-primary: #05204A ;
---color-secondary: #CAC4CE;
---color-accent: #F7ECE1; */
-/* 
-/* 
----break--- */
-/* 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}  */
+
 
 
 .bg-dots {
@@ -121,6 +107,55 @@ body {
   background-size: 20px 20px;
 }
 
-.bg-blacks {
-  background-color: black;
+
+
+
+
+
+
+
+
+
+@layer utilities {
+  @keyframes border-rotate {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+
+  .border-animated {
+    position: relative;
+    z-index: 0;
+  }
+
+  .border-animated::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 1rem;
+    padding: 2px;
+    background: linear-gradient(270deg, #14b8a6, #6366f1, #14b8a6);
+    background-size: 400% 400%;
+    animation: border-rotate 8s linear infinite;
+    pointer-events: none;
+  }
+}
+
+
+@layer utilities {
+
+  .bg-blacks {
+    background-color: blue;
+  }
+
+  .bg-blues {
+    background-color: black;
+  }
 }

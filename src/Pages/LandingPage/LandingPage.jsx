@@ -9,19 +9,18 @@ import { BsTelegram } from "react-icons/bs";
 const LandingPage = () => {
   return (
     <> 
-    {/* <div className="flex h-screen w-max"> */}
-
-    <div className="  min-h-screen flex flex-col mx-auto ">
-        {/* Background Blobs */}
-  <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-purple-200  rounded-full blur-3xl opacity-20 animate-pulse z-[-1]" />
-  <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] bg-amber-200 rounded-full blur-3xl opacity-20 animate-pulse z-[-1]" />
-
-     
-      <Nav/>
-      <Hero/>
-      <Footer/>
     
-      </div>
+      
+      <div className="  flex flex-col mx-auto max-w-[1100px] scroll-smooth gap-1 min-h-screen ">
+
+      
+        <Nav/>
+        
+        <Hero/>
+        
+        <Footer/>
+      
+        </div>
       </>
     
   );

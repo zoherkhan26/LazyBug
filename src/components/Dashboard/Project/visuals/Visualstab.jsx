@@ -29,7 +29,7 @@ export default function VisualsTab() {
       
       const result = await pinata.upload.file(file);
       const url = await pinata.gateways.convert(result.IpfsHash);
-      console.log(url)    
+       
       if (project.visuals.includes(url)) {
         toast.error("This image already exists.");
         return;
@@ -125,7 +125,7 @@ export default function VisualsTab() {
       onOpenChange={() => setpreviewImage(null)}
       >
         <DialogClose asChild>
-  <button className="absolute top-4 right-4 text-white text-2xl">×</button>
+  <button className="absolute top-4 right-4 text-white text-2xl bg-black p-1 hover:cursor-pointer">×</button>
 </DialogClose>
          <DialogContent
   className="bg-black/90 border-none p-0 max-w-[95vw] max-h-[95vh] flex justify-center items-center overflow-hidden"

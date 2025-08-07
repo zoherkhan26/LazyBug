@@ -6,12 +6,14 @@ import useProjectStore from "@/Store/projectstore";
 import { useParams } from "react-router-dom";
 import Featurelist from "./Featurelist";
 import EmptyState from "@/components/Dashboard/Project/EmptyState";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+
+
 
 function Mvptab() {
   const [isFeatureDialogOpen, setFeatureDialogOpen] = useState(false);
   const projects = useProjectStore((state) => state.projects);
-  const removeFeature = useProjectStore((state) => state.removeFeature);
+
   const { projectname } = useParams();
   const project = projects.find((p) => p.name === projectname);
   const projectId = project?.id;
@@ -26,6 +28,7 @@ function Mvptab() {
   };
 
   return (
+    
     <section className="flex flex-col grow gap-4">
       <div className="flex justify-between items-center">
         <p className="font-semibold text-center text-black/70 text-sm">
@@ -88,6 +91,7 @@ function Mvptab() {
         )}
       </motion.section>
     </section>
+   
   );
 }
 

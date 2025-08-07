@@ -46,5 +46,4 @@ export {
   tailwind,
   mui,
   github,
-  // Remove this line if not using it
 };

@@ -1,34 +1,33 @@
-import React, { useState } from 'react'
-import SideBar from '../../components/Dashboard/Home/SideBar'
-import { BreadCrumb } from '../../components/Dashboard/Home/BreadCrumb'
-
-import { NavBar } from '../../components/Dashboard/Home/NavBar'
-import { Outlet } from 'react-router-dom'
+import React, { useState } from "react";
+import SideBar from "../../components/Dashboard/Home/SideBar";
+import { NavBar } from "../../components/Dashboard/Home/NavBar";
+import { Outlet } from "react-router-dom";
 
 export const Dashboard = () => {
-  const [open , setOpen] = useState(window.innerWidth > 768 ? true : '');
+  const [open, setOpen] = useState(window.innerWidth > 768 ? true : "");
   return (
-    <div className='flex h-screen overflow-hidden'> 
+    <div className="flex h-screen overflow-hidden ">
       {/* Sidebar */}
-      <div className='sticky top-0 h-screen'>
-        <SideBar open={open} setOpen={setOpen}/>
+      <div className="sticky top-0 h-screen">
+        <SideBar open={open} setOpen={setOpen} />
       </div>
 
       {/* Main Content Area */}
-      <div className='flex-1 flex flex-col'>
+      <div className="flex-1 flex flex-col">
         {/* Navbar */}
-        <div className='w-full z-50 sticky top-0'>
-          <NavBar open={open} setOpen={setOpen}/>
+        <div className="w-full z-50 sticky top-0">
+          <NavBar open={open} setOpen={setOpen} />
         </div>
 
         {/* Scrollable Outlet */}
-        <div className='flex-1 overflow-y-auto px-4'>
+        <div className="flex-1 overflow-y-auto px-4">
           <Outlet />
         </div>
       </div>
     </div>
   );
-}
+};
+
 
 
 

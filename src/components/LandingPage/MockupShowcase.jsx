@@ -16,6 +16,7 @@ const MockupShowcase = () => {
     src={lazybugmockup}
     alt="LazyBug Dashboard"
     className="w-full h-auto block rounded-2xl"
+    loading="lazy"
   />
 </div>
 

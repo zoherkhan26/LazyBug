@@ -37,7 +37,7 @@ export default function Featurelist({ feature, projectId }) {
     toggleFeatureCompletion(projectId, featureId);
     const message = !feature.completed
       ? "Marked as completed"
-      : "Marked as incomplete";
+      : "Marked as Incomplete";
     toast.info(message);
   };
 

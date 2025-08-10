@@ -21,7 +21,7 @@ function Footer() {
       <FaLinkedin className='w-6 h-6 rounded-full'/>
     </a>
 
-    <a target='_blank' href="https://t.me/zoherkhan" className='transition-transform hover:scale-110 hover:text-accent'>
+    <a target='_blank' href="https://t.me/resistancefollow" className='transition-transform hover:scale-110 hover:text-accent'>
      <BsTelegram className='w-6 h-6 rounded-full'/>
     </a>
 

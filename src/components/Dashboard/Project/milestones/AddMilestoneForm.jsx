@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import useProjectStore from "@/Store/projectstore";
 import { toast } from "react-toastify";
+import { Label } from "@radix-ui/react-dropdown-menu";
 
 
 const AddMilestoneForm = ({ projectId }) => {
@@ -82,12 +83,17 @@ const AddMilestoneForm = ({ projectId }) => {
            {errors.description && (
               <p className="text-red-500 text-sm">{errors.description.message}</p>
             )}
+            <div>
+            <Label htmlFor="dueDate" className="text-sm font-semibold">
+              Due Date
+            </Label>
           <input
             type="date"
             {...register("deadline", { required: 'Due date is required' })}
             min={new Date().toISOString().split('T')[0]}
             className="w-full px-4 py-1 text-gray-900 bg-white border border-gray-300 rounded-lg mt-2 focus:outline-none focus:border-black"
           />
+            </div>
           <Button type="submit" className="w-full w-rounded bg-black text-white px-4 py-1.5 grow hover:bg-black/90">
             Add Milestone
           </Button>

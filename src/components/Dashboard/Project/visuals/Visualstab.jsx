@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import EmptyState from "@/components/Dashboard/Project/EmptyState";
-import { DialogClose } from "@radix-ui/react-dialog";
+import { DialogClose, DialogTitle } from "@radix-ui/react-dialog";
 
 export default function VisualsTab() {
   const { projects, addVisual, removeVisual } = useProjectStore();
@@ -112,7 +112,7 @@ export default function VisualsTab() {
                     />
                     <button
                       onClick={() => handleDelete(url)}
-                      className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      className="absolute top-2 right-2 bg-red-600 text-white text-[8px] md:text-xs p-0.5 md:px-2 md:py-1 rounded md:opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                     >
                       Delete
                     </button>

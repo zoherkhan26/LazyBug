@@ -10,6 +10,7 @@ import Visualstab from './components/Dashboard/Project/visuals/Visualstab'
 import Techtab from './components/Dashboard/Project/tech/Techtab'
 import Milestonestab from './components/Dashboard/Project/milestones/Milestonestab'
 import { ToastContainer, Zoom } from 'react-toastify'
+import { NotFound } from './Pages/NotFound/NotFound'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -53,6 +54,7 @@ function App() {
             </Route>
 
           </Route>
+          <Route path='*' element={<NotFound/>}/>
 
         </Routes>
       </Router>

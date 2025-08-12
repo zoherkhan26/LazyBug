@@ -8,7 +8,7 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet"; 
-import lazyBugLogo from "../../../assets/lazyBugLogo.png";
+import lazyBugLogo from "../../../assets/lazyBugLogo.webp";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SidebarContext = createContext();

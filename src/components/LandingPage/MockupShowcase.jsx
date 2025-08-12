@@ -1,6 +1,6 @@
 
 import React from "react";
-import lazybugmockup from '@/assets/lazybug-mockup.png';
+import lazybugmockup from '@/assets/lazybug-mockup.webp';
 import { DotPatterns } from "../DotPatterns";
 
 const MockupShowcase = () => {

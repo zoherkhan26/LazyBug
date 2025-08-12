@@ -3,7 +3,7 @@ import {motion} from "framer-motion"
 import DashboardButton from './DashboardButton'
 import '@fontsource-variable/schibsted-grotesk'
 import '@fontsource/bebas-neue';
-import lazyBugLogo from '../../assets/lazyBugLogo.png'
+import lazyBugLogo from '../../assets/lazyBugLogo.webp'
 
 
 function Nav() {

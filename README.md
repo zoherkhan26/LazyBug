@@ -38,7 +38,7 @@ LazyBug/
 │── vite.config.ts
 └── README.md
 
-
+```
 
 ## ⚙️ Installation & Setup
 

@@ -43,24 +43,31 @@ LazyBug/
 ## ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
-
+```
 git clone https://github.com/yourusername/lazybug.git
 cd lazybug
+```
 
 2️⃣ Install dependencies
-npm install 
+```
+npm install
+``` 
 
 3️⃣ Set up environment variables
 
 Create a .env file in the root and add:
+```
 VITE_PINATA_API_KEY=your_pinata_api_key
 VITE_PINATA_SECRET_API_KEY=your_pinata_secret
-
+```
 4️⃣ Run the development server
+```
 npm run dev
-
+```
 5️⃣ Build for production
+```
 npm run build
+```
 
 
 

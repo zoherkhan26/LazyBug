@@ -1,4 +1,6 @@
 # 🐞 LazyBug – Project Management Made Simple
+[![Live Demo](https://img.shields.io/badge/LIVE-DEMO-green?style=for-the-badge)](https://lazybug.vercel.app)
+
 
 LazyBug is a modern **project management tool** built with **React, Zustand, and Tailwind CSS**, designed to make tracking tasks, milestones, and visuals simple and efficient — without the clutter of enterprise tools.
 
@@ -16,10 +18,12 @@ LazyBug is a modern **project management tool** built with **React, Zustand, and
 ---
 
 ## 🛠 Tech Stack
-- **Frontend:** React + Vite + Tailwind CSS
-- **State Management:** Zustand
-- **Image Storage:** Pinata (IPFS)
-- **Icons:** Lucide React
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+ ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+ ![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+ ![Zustand](https://img.shields.io/badge/Zustand-181717?style=for-the-badge&logo=zustand&logoColor=white)
+ ![IPFS](https://img.shields.io/badge/IPFS-65C2CB?style=for-the-badge&logo=ipfs&logoColor=white)
+
 
 ---
 
@@ -76,6 +80,10 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 
 
+
+
 📜 License
 This project is licensed under the MIT License.
 
+
+🌐 [Portfolio](https://your-portfolio-link) | 💼 [LinkedIn](https://linkedin.com/in/your-profile)

@@ -5,9 +5,9 @@ import Footer from "../../components/LandingPage/Footer";
 import Hero from "../../components/LandingPage/Hero"
 
 const LandingPage = () => {
-const lenis = useLenis((lenis) => {
-  console.log(lenis)
-})
+// const lenis = useLenis((lenis) => {
+//   console.log(lenis)
+// })
   return (
     <> 
     <ReactLenis root>

@@ -111,7 +111,7 @@ export const CreateProjectForm = ({ open, setOpen }) => {
                 }
               })}
               className="w-full h-24 px-4 py-2  text-gray-900 bg-white border border-gray-300 rounded-lg resize-none focus:outline-none  transition duration-200 ease-in-out mt-2 focus:border-black"
-              placeholder="spreadout your porject description"
+              placeholder="Break down your project description."
             />
             {errors.description && (
               <p className="text-red-500 text-sm">{errors.description.message} </p>
